@@ -7,10 +7,12 @@ document.addEventListener("keypress", keyPress); // keypress event listener
 
 function handleClick() { // to handle click on buttons
     makeSound(this.innerHTML)
+    animation(this.innerHTML)
 }
 
 function keyPress(event) { // to handle key press
     makeSound(event.key);
+    animation(event.key)
 }
 
 function play(path) { // play the audio
@@ -46,6 +48,15 @@ function makeSound(key) { // choosing the audio
     }
 }
 
+function animation(buttonClicked) {  // animation when a button is activated
+    var activeButton = document.querySelector('.'+buttonClicked);
+
+    activeButton.classList.add("pressed"); //  adding the new class to the button
+
+    setTimeout(() => { // to remove the animation
+        activeButton.classList.remove("pressed");
+    }, 200);
+}
 
 
 
